@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tv_shows_app/css/style.css' %}">    
+    <script src="{% static 'tv_shows_app/js/script.js' %}"></script>
+</head>
+
+<body>
+    <header>
+        <a href="/shows">Go back to list of shows</a>
+    </header>
+    <h1>Edit Show {{this_show.id}}</h1>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="update" method="POST">
+        {% csrf_token %}
+        <p>Title<br>
+        <input type="text" name="title" value="{{this_show.title}}"></p>
+        <p>Network<br>
+        <input type="text" name="network" value="{{this_show.network}}"></p>
+        <p>Release Date<br>
+        <input type="text" name="release_date" value="{{this_show.release_date}}" placeholder="yyyy-mm-dd"></p>
+        <p>Description<br>
+        <textarea name="description" value="{{this_show.description}}">{{this_show.description}}</textarea></p>
+        <input type="submit" value="Update">
+    </form>
+
+    <p><a href="/shows/{{this_show.id}}">Back to show</a></p>
+    
+</body>
+</html>

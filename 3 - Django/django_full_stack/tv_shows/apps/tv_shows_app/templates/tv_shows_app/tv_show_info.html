@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Read (One)</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tv_shows_app/css/style.css' %}">    
+    <script src="{% static 'tv_shows_app/js/script.js' %}"></script>
+</head>
+
+<body>
+    <header>
+        <a href="/shows">Go back to list of shows</a>
+    </header>
+
+    <h1>TV Show {{shows.id}}</h1>
+    <p>Title: {{shows.title}}</p>
+    <p>Network: {{shows.network}}</p>
+    <p>Release Date: {{shows.release_date}}</p>
+    <p>Description: {{shows.description}}</p>
+    <p>Last Updated: {{shows.updated_at}}</p>
+    <a href="{{shows.id}}/edit">Edit</a> | <!--Delete this show from database--><form method="post" action="{{shows.id}}/destroy" class="inline">{% csrf_token %}<input type="hidden" name="{{shows.id}}"><button type="submit" value="Delete" class="link-button">Delete</button></form>
+
+</body>
+</html>

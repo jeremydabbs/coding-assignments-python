@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey Index</title>
+</head>
+<body>
+    <form action='/result' method='post'>
+        <p>Your Name: <input type="text" name="username"></p>
+        <p>Dojo Location: <select name="dojo_location" size="3">
+            <option value="Python">Python</option>
+            <option value="C#">C#</option>
+            <option value="JavaScript">JavaScript</option>
+        </select></p>
+        <p>Favorite Language: <select name="favorite_language" size="3">
+            <option value="Chicago">Chicago</option>
+            <option value="Seattle">Seattle</option>
+            <option value="San Jose">San Jose</option>
+        </select></p></p>
+        <p>Comment (optional): </p>
+        <textarea name="comment" rows="10" cols="30"></textarea>
+        <p><input type="submit" value="Button"></p>
+    </form>
+</body>
+</html>

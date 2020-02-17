@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books & Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/css/style.css' %}">
+    <script src="{% static 'books_authors_app/js/script.js' %}"></script>
+</head>
+<body>
+    
+    <h1>{{authors.first_name}} {{authors.last_name}}</h1>
+    <p>ID: {{authors.id}}</p>
+    <p>Notes: {{authors.notes}}</p>
+    <p>Books</p>
+    {% for book in authors.books.all %}
+        <li>{{book.title}}</li>
+    {% endfor %}
+
+    <form action="/books/update/{{authors.id}}" method="POST">
+        <select name="book">
+            <option value=''>Select a book</option>
+            {% for book in books.all %}
+            <option value='{{book.id}}'>{{book.title}}</option>
+            {% endfor %}
+        </select>
+            {% csrf_token %}
+            <input type="submit" value="Add">
+        </form>
+
+    <p><a href="/authors">Back to Authors</a></p>
+</body>
+</html>

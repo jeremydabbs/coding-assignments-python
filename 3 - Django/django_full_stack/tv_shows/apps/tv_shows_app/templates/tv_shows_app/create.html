@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tv_shows_app/css/style.css' %}">    
+    <script src="{% static 'tv_shows_app/js/script.js' %}"></script>
+</head>
+
+<body>
+    <header>
+        <a href="/shows">Go back to list of shows</a>
+    </header>
+    <h1>Add a New Show</h1>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="create" method="POST">
+        <p>Title<br>
+        <input type="text" name="title"></p>
+        <p>Network<br>
+        <input type="text" name="network"></p>
+        <p>Release Date<br>
+        <input type="text" name="release_date" placeholder="yyyy-mm-dd"></p>
+        <p>Description<br>
+        <textarea name="description"></textarea></p>
+        {% csrf_token %}
+        <input type="submit" value="Create">
+    </form>
+    
+</body>
+</html>

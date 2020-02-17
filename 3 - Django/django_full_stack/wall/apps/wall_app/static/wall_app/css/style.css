@@ -1,0 +1,31 @@
+body {
+    margin: 0 auto;
+    width: 970px;
+}
+header * {
+    display: inline-block;
+}
+header p {
+    margin-left: 550px;
+}
+div.comment {
+    margin-left: 50px;
+}
+.post_message {
+    margin-bottom: 40px;
+}
+.user_display {
+    font-weight: bold;
+}
+#message_button {
+    background-color: blue;
+    color: white;
+}
+#comment_button {
+    background-color: green;
+    color: white;
+}
+#delete_button {
+    background-color: darkred;
+    color: white;
+}
